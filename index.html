@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fábio Vogelaar Carlucci — Investments & Wealth Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e45;
+      --gold: #b8975a;
+      --gold-light: #d4af7a;
+      --gold-pale: #f5ead8;
+      --cream: #faf8f4;
+      --gray: #6b7280;
+      --light: #f0ece4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-line {
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+      opacity: 0.25;
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 8vw;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s ease both;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 78px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 300;
+      color: var(--gold-pale);
+      margin-bottom: 36px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: rgba(250,248,244,0.68);
+      max-width: 460px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .badge {
+      border: 1px solid rgba(184,151,90,0.35);
+      background: rgba(184,151,90,0.07);
+      color: var(--gold-light);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 2px;
+    }
+
+    .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid rgba(184,151,90,0.5);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ── HERO RIGHT — PHOTO ── */
+    .hero-right {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      animation: fadeIn 1.4s ease both 0.3s;
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 30%),
+                  linear-gradient(to top, var(--navy) 0%, transparent 25%);
+    }
+
+    .hero-number {
+      position: absolute;
+      bottom: 60px;
+      right: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      font-weight: 300;
+      color: rgba(184,151,90,0.08);
+      line-height: 1;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(184,151,90,0.15);
+      border-bottom: 1px solid rgba(184,151,90,0.15);
+      padding: 40px 8vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .stat {
+      text-align: center;
+      padding: 10px;
+    }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.5);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 8vw;
+    }
+
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h2 em { font-style: italic; color: var(--gold-light); }
+
+    .section-lead {
+      font-size: 16px;
+      color: rgba(250,248,244,0.65);
+      max-width: 600px;
+      line-height: 1.85;
+      margin-bottom: 64px;
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-text p {
+      color: rgba(250,248,244,0.7);
+      font-size: 15.5px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-text p strong {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .pillars { display: flex; flex-direction: column; gap: 24px; }
+    .pillar {
+      border-left: 2px solid rgba(184,151,90,0.3);
+      padding: 4px 0 4px 24px;
+      transition: border-color 0.3s;
+    }
+    .pillar:hover { border-color: var(--gold); }
+    .pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 13.5px;
+      color: rgba(250,248,244,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── EXPERTISE ── */
+    .expertise-bg { background: var(--navy-mid); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .expertise-card {
+      background: rgba(13,27,42,0.7);
+      padding: 48px 36px;
+      border-top: 1px solid rgba(184,151,90,0);
+      transition: border-color 0.4s, background 0.4s;
+      cursor: default;
+    }
+    .expertise-card:hover {
+      border-top-color: var(--gold);
+      background: rgba(13,27,42,1);
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: rgba(250,248,244,0.5);
+      line-height: 1.8;
+    }
+
+    /* ── BOOKS SECTION ── */
+    .books-section { background: var(--navy); }
+    .books-highlight {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .books-visual {
+      position: relative;
+      height: 340px;
+    }
+    .book-stack {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: -10px;
+    }
+    .book {
+      width: 64px;
+      height: 200px;
+      border-radius: 2px 4px 4px 2px;
+      position: relative;
+      box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
+    }
+    .book::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 2px 0 0 2px;
+    }
+    .b1 { background: #1a3a5c; height: 220px; transform: rotate(-3deg) translateX(20px); }
+    .b2 { background: #2d4a6b; height: 240px; transform: rotate(-1deg) translateX(10px); }
+    .b3 { background: var(--gold); height: 260px; transform: rotate(0deg); }
+    .b4 { background: #2d4a6b; height: 240px; transform: rotate(1deg) translateX(-10px); }
+    .b5 { background: #1a3a5c; height: 210px; transform: rotate(3deg) translateX(-20px); }
+    .book-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      font-weight: 300;
+      color: rgba(184,151,90,0.12);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .books-content {}
+    .books-content h2 { margin-bottom: 20px; }
+    .books-content p {
+      color: rgba(250,248,244,0.65);
+      font-size: 15.5px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .publisher-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(184,151,90,0.3);
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-top: 10px;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-bg { background: var(--navy-mid); }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(184,151,90,0.1));
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 52px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -44px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--navy-mid);
+      box-shadow: 0 0 0 3px rgba(184,151,90,0.2);
+    }
+    .tl-year {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .tl-role {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.4);
+      margin-bottom: 10px;
+    }
+    .tl-desc {
+      font-size: 14px;
+      color: rgba(250,248,244,0.6);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .edu-card {
+      border: 1px solid rgba(184,151,90,0.15);
+      padding: 36px 28px;
+      transition: border-color 0.3s;
+    }
+    .edu-card:hover { border-color: rgba(184,151,90,0.4); }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .edu-inst {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .edu-year {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(250,248,244,0.4);
+    }
+
+    /* ── LANGUAGES ── */
+    .lang-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .lang-item { text-align: center; }
+    .lang-flag {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .lang-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 1px;
+      display: block;
+    }
+    .lang-level {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.4);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--navy);
+      border-top: 1px solid rgba(184,151,90,0.15);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+    .contact-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(184,151,90,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.4);
+      margin-bottom: 3px;
+    }
+    .contact-value {
+      font-size: 14px;
+      color: var(--cream);
+    }
+    .contact-value a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .contact-value a:hover { color: var(--gold-light); }
+
+    .contact-quote {
+      border-left: 2px solid var(--gold);
+      padding: 20px 0 20px 32px;
+    }
+    .contact-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+    .contact-quote cite {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 20px;
+      font-style: normal;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(5,12,20,0.8);
+      border-top: 1px solid rgba(184,151,90,0.1);
+      padding: 28px 8vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .footer-copy {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: rgba(250,248,244,0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 60vw; }
+      .hero-left { padding: 60px 6vw; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .books-highlight, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .lang-row { grid-template-columns: repeat(3, 1fr); }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-line"></div>
+  <div class="hero-left">
+    <p class="eyebrow">Investments &amp; Wealth Management</p>
+    <h1>Fábio<br><em>Vogelaar</em><br>Carlucci</h1>
+    <p class="hero-subtitle">PhD · Entrepreneur · Investor · Author</p>
+    <p class="hero-desc">
+      Doctor in Business Administration from USP, investment advisor and author of over 20 books
+      in the fields of Business Administration and Wealth Management. At Ficus Capital, 
+      he dedicates his work to intelligent capital allocation and first-class financial planning.
+    </p>
+    <div class="badge-row">
+      <span class="badge">FEA-RP / USP</span>
+      <span class="badge">Ficus Capital</span>
+      <span class="badge">Advisory Board Member</span>
+      <span class="badge">Editora Juspodivm</span>
+    </div>
+    <div class="cta-row">
+      <a href="mailto:fabio@micalce.com" class="btn-primary">Get in Touch</a>
+      <a href="#about" class="btn-secondary">Explore my work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="WhatsApp_Image_2024-09-27_at_16_38_48.jpeg" alt="Fábio Vogelaar Carlucci" />
+    <span class="hero-number">I</span>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-number">20+</span>
+    <span class="stat-label">Published Books</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">15+</span>
+    <span class="stat-label">Years of Experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">5</span>
+    <span class="stat-label">Languages</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">8</span>
+    <span class="stat-label">Companies Founded</span>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-tag">Profile</p>
+    <h2>Academic discipline.<br><em>Market vision.</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          A business administrator holding a <strong>PhD and Master's degree from FEA-RP/USP</strong>, 
+          I have built a career that unites academic rigor with intense entrepreneurial activity. 
+          From the university classroom to corporate boards, through venture creation and investment 
+          advisory — every experience has been built with intention.
+        </p>
+        <p>
+          At <strong>Ficus Capital</strong>, I work as an investment advisor with the purpose 
+          of delivering world-class wealth planning: strategic capital allocation, portfolio 
+          structuring, and financial governance for individuals and companies seeking to protect 
+          and grow their wealth intelligently.
+        </p>
+        <p>
+          At <strong>Be Trust</strong>, I serve as an advisory board member for this innovative 
+          platform connecting investors and real estate developers through asset tokenization — 
+          bridging finance, technology, and real estate in a unique business model.
+        </p>
+        <p>
+          International experience across <strong>Italy, Australia, the Philippines, the USA, and beyond</strong> 
+          broadens my perspective on global markets, cultures, and business models.
+        </p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-title">Capital Allocation</div>
+          <div class="pillar-desc">Portfolio structuring and allocation focused on efficiency, calibrated risk, and sustainable long-term returns.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Wealth Planning</div>
+          <div class="pillar-desc">Integrated strategies for asset protection, growth, and succession for individuals and families.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Financial Governance</div>
+          <div class="pillar-desc">Implementation of financial discipline and decision-making processes in companies and funds.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Real Estate & Innovation</div>
+          <div class="pillar-desc">Modern real estate investment structures, including tokenization and co-investment models.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Business Strategy</div>
+          <div class="pillar-desc">Business development, company expansion, and long-term value creation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERTISE ══ -->
+<section class="expertise-bg">
+  <div class="section-inner">
+    <p class="section-tag">Areas of Expertise</p>
+    <h2>Where <em>expertise</em><br>meets results</h2>
+    <div class="expertise-grid">
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="20" stroke="#b8975a" stroke-width="1.2"/>
+          <polyline points="10,30 18,18 26,24 34,12" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <div class="card-title">Investment Management</div>
+        <div class="card-desc">Specialized advisory in portfolio structuring and monitoring. Allocation grounded in fundamentals, risk profile, and long-term objectives.</div>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="32" height="24" rx="2" stroke="#b8975a" stroke-width="1.2"/>
+          <line x1="6" y1="18" x2="38" y2="18" stroke="#b8975a" stroke-width="1.2"/>
+          <line x1="22" y1="18" x2="22" y2="34" stroke="#b8975a" stroke-width="1.2"/>
+        </svg>
+        <div class="card-title">Wealth Management</div>
+        <div class="card-desc">Comprehensive wealth planning: asset protection, succession, tax and financial structuring for high-net-worth families and entrepreneurs.</div>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="22,6 38,16 38,32 22,42 6,32 6,16" stroke="#b8975a" stroke-width="1.2" fill="none"/>
+          <circle cx="22" cy="24" r="6" stroke="#b8975a" stroke-width="1.2"/>
+        </svg>
+        <div class="card-title">Real Estate & Tokenization</div>
+        <div class="card-desc">Innovative real estate investment structures. Co-investment between investors and developers with governance and blockchain technology.</div>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 36 L8 20 L16 24 L24 12 L32 20 L38 14" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+          <circle cx="38" cy="14" r="3" fill="#b8975a"/>
+        </svg>
+        <div class="card-title">Advisory & Board Membership</div>
+        <div class="card-desc">Advisory board member with a focus on corporate governance, financial discipline, and sustainable growth for expanding companies.</div>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="8" width="18" height="26" rx="1.5" stroke="#b8975a" stroke-width="1.2"/>
+          <line x1="14" y1="14" x2="24" y2="14" stroke="#b8975a" stroke-width="1.2"/>
+          <line x1="14" y1="18" x2="24" y2="18" stroke="#b8975a" stroke-width="1.2"/>
+          <line x1="14" y1="22" x2="20" y2="22" stroke="#b8975a" stroke-width="1.2"/>
+          <path d="M26 28 L34 36" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="30" r="6" stroke="#b8975a" stroke-width="1.2"/>
+        </svg>
+        <div class="card-title">Research & Authorship</div>
+        <div class="card-desc">Academic and editorial production with over 20 published works in Business Administration, Public Administration, and Wealth Management.</div>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="8" stroke="#b8975a" stroke-width="1.2"/>
+          <circle cx="30" cy="30" r="8" stroke="#b8975a" stroke-width="1.2"/>
+          <path d="M22 16 Q30 16 30 22" stroke="#b8975a" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="card-title">Strategy & Retail</div>
+        <div class="card-desc">Hands-on experience as a retail business owner. Unit expansion, ERP implementation, inventory management, and margin optimization.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKS ══ -->
+<section class="books-section">
+  <div class="section-inner">
+    <div class="books-highlight">
+      <div class="books-visual">
+        <span class="book-count">20+</span>
+        <div class="book-stack">
+          <div class="book b1"></div>
+          <div class="book b2"></div>
+          <div class="book b3"></div>
+          <div class="book b4"></div>
+          <div class="book b5"></div>
+        </div>
+      </div>
+      <div class="books-content">
+        <p class="section-tag">Editorial Work</p>
+        <h2>Over <em>20 books</em><br>published</h2>
+        <p>
+          A reference author in <strong style="color:var(--gold-light);font-weight:400;">Business Administration and Public Administration</strong>,
+          with works widely adopted across Brazil. My editorial output combines technical rigor 
+          with accessible language, having educated thousands of professionals and civil service candidates.
+        </p>
+        <p>
+          Beyond those titles, I also write in the field of 
+          <strong style="color:var(--gold-light);font-weight:400;">Wealth Management and Investments</strong>, 
+          bringing readers the same principles I apply in advising my clients: 
+          discipline, clarity, and a focus on sustainable results.
+        </p>
+        <div class="publisher-tag">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="9" x2="9" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
+          Editora Juspodivm
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAREER ══ -->
+<section class="timeline-bg">
+  <div class="section-inner">
+    <p class="section-tag">Career</p>
+    <h2>A career built<br>with <em>purpose</em></h2>
+    <p class="section-lead">From academia to the market — each chapter contributes to a unique perspective on finance, business, and value creation.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <p class="tl-year">2025 — Present</p>
+        <h3 class="tl-title">Be Trust</h3>
+        <p class="tl-role">Advisory Board Member</p>
+        <p class="tl-desc">Innovative real estate investment and asset tokenization platform. Serving as an advisory board member with a focus on business model, governance, fundraising, and growth strategy.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-year">2022 — Present</p>
+        <h3 class="tl-title">Ficus Capital</h3>
+        <p class="tl-role">Investment Advisor</p>
+        <p class="tl-desc">Investment firm dedicated to wealth planning, portfolio structuring, and capital allocation for individuals and companies seeking to grow and protect their assets with discipline.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-year">2021 — 2025</p>
+        <h3 class="tl-title">Votex</h3>
+        <p class="tl-role">Founder</p>
+        <p class="tl-desc">Creation, development, and successful sale of a metallic materials manufacturing company. Full entrepreneurial cycle: conception, operations, and exit.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-year">2017 — 2021</p>
+        <h3 class="tl-title">PhD — FEA-RP/USP</h3>
+        <p class="tl-role">Researcher in Business Administration</p>
+        <p class="tl-desc">Research focused on organizational efficiency, Data Envelopment Analysis (DEA), and operations research. Part of the doctoral program was conducted at <strong style="color:var(--gold-light);font-weight:400;">The University of Queensland, Australia</strong>, under the co-supervision of Prof. Dr. Malcolm Wegener — an experience that broadened the international scope of the research and deepened quantitative methodological rigor.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-year">2014 — Present</p>
+        <h3 class="tl-title">Usaflex · MICALCE</h3>
+        <p class="tl-role">Partner & Owner · Retail</p>
+        <p class="tl-desc">Management of franchise stores and a retail footwear company, including unit expansion, ERP implementation, inventory optimization, and increased operational profitability.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-year">2011 — Present</p>
+        <h3 class="tl-title">Editora Juspodivm</h3>
+        <p class="tl-role">Author · Over 20 published works</p>
+        <p class="tl-desc">Ongoing publication of books in Business Administration, Public Administration, and Wealth Management & Investments. An established reference in the field.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ══ -->
+<section>
+  <div class="section-inner">
+    <p class="section-tag">Academic Background</p>
+    <h2>A foundation of<br><em>academic excellence</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PhD</div>
+        <div class="edu-inst">University of São Paulo — FEA-RP/USP</div>
+        <div class="edu-year">2017 — 2021 · Business Administration</div>
+        <div class="edu-year" style="margin-top:8px;color:rgba(212,175,122,0.7);">Co-supervised by Prof. Dr. Malcolm Wegener · The University of Queensland, Australia</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Master's Degree</div>
+        <div class="edu-inst">University of São Paulo — FEA-RP/USP</div>
+        <div class="edu-year">2011 — 2012 · Business Administration</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor's Degree</div>
+        <div class="edu-inst">University of São Paulo — FEA-RP/USP</div>
+        <div class="edu-year">2007 — 2010 · Business Administration</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Academic Exchange</div>
+        <div class="edu-inst">Università di Bologna — Italy</div>
+        <div class="edu-year">2009 — 2010 · Economics & Administration</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Doctoral Research Stay</div>
+        <div class="edu-inst">The University of Queensland — Australia</div>
+        <div class="edu-year">Co-supervised by Prof. Dr. Malcolm Wegener · School of Agriculture & Food Sciences</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Executive Workshop</div>
+        <div class="edu-inst">Babson College — Boston, USA</div>
+        <div class="edu-year">2014 · Entrepreneurship · in partnership with FGV-EAESP</div>
+      </div>
+    </div>
+
+    <div class="lang-row">
+      <div class="lang-item">
+        <span class="lang-flag">🇧🇷</span>
+        <span class="lang-name">Portuguese</span>
+        <span class="lang-level">Native</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">🇺🇸</span>
+        <span class="lang-name">English</span>
+        <span class="lang-level">Fluent</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">🇮🇹</span>
+        <span class="lang-name">Italian</span>
+        <span class="lang-level">Advanced</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">🇪🇸</span>
+        <span class="lang-name">Spanish</span>
+        <span class="lang-level">Advanced</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">🇫🇷</span>
+        <span class="lang-name">French</span>
+        <span class="lang-level">Intermediate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-section">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <p class="section-tag">Contact</p>
+        <h2>Let's<br><em>connect</em></h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:fabio@micalce.com">fabio@micalce.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 9.76a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+5516981488260">+55 16 98148-8260</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Ribeirão Preto, SP — Brazil</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value"><a href="https://linkedin.com/in/fabiovogelaar" target="_blank">linkedin.com/in/fabiovogelaar</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-quote">
+        <blockquote>
+          "Investing is an act of trust. My work is to be worthy of that trust — through knowledge, discipline, and transparency."
+        </blockquote>
+        <cite>— Fábio Vogelaar Carlucci</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span class="footer-name">Fábio Vogelaar Carlucci</span>
+  <span class="footer-copy">© 2025 · Ficus Capital · Ribeirão Preto, Brazil</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = `${i * 0.1}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.tl-item, .expertise-card, .edu-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  const style = document.createElement('style');
+  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
